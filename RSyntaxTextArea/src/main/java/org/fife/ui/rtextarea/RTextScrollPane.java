@@ -37,7 +37,7 @@ import javax.swing.JScrollPane;
  * @author Robert Futrell
  * @version 1.0
  */
-public class RTextScrollPane extends JScrollPane {
+public class RTextScrollPane extends ModernScrollPane {
 
 	private Gutter gutter;
 
