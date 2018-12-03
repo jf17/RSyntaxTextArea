@@ -565,6 +565,15 @@ URL						= (((https?|f(tp|ile))"://"|"www.")({URLCharacters}{URLEndCharacter})?)
 	  "JMenuItem" |
 	  "ActionListener" |
 	  "ActionEvent" |
+	  "Color" |
+	  "Font" |
+	  "Style" |
+	  "InputEvent" |
+	  "KeyEvent" |
+	   "JOptionPane" |
+	    "JMenuBar" |
+		"Graphics2D" |
+		"Graphics" |
 	
 	/* java.util classes */
     "Collection" |
