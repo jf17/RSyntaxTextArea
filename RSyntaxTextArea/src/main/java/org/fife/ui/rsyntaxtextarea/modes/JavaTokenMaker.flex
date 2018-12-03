@@ -560,6 +560,7 @@ URL						= (((https?|f(tp|ile))"://"|"www.")({URLCharacters}{URLEndCharacter})?)
 	/* Swing classes */
 	 "JFrame" |
 	  "JPanel" |
+	  "JFileChooser" |
 	  "BorderLayout" |
 	  "JMenu" |
 	  "JMenuItem" |
