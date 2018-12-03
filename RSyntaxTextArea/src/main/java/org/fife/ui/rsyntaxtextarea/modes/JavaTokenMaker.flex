@@ -557,6 +557,15 @@ URL						= (((https?|f(tp|ile))"://"|"www.")({URLCharacters}{URLEndCharacter})?)
 
     "IOError" |
 
+		/* Swing classes */
+	 "JFrame" |
+	  "JPanel" |
+	  "BorderLayout" |
+	  "JMenu" |
+	  "JMenuItem" |
+	  "ActionListener" |
+	  "ActionEvent" |
+	
 	/* java.util classes */
     "Collection" |
     "Comparator" |
