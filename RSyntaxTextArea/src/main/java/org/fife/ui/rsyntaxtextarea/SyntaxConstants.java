@@ -56,6 +56,11 @@ public interface SyntaxConstants {
 	 * Style for highlighting C.
 	 */
 	String SYNTAX_STYLE_C				= "text/c";
+	
+		/**
+	 * Style for highlighting C.
+	 */
+	String SYNTAX_STYLE_PIXI				= "text/pixi";
 
 
 	/**

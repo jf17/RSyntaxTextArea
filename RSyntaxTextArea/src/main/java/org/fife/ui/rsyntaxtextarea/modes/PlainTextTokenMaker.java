@@ -55,7 +55,7 @@ import org.fife.ui.rsyntaxtextarea.*;
  *
  */
 
-public class PlainTextTokenMaker extends AbstractJFlexTokenMaker {
+public class PlainTextTokenMaker extends AbstractJFlexPixiTokenMaker {
 
   /** This character denotes the end of file */
   public static final int YYEOF = -1;
