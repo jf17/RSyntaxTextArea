@@ -1,7 +1,7 @@
 /*
- * 27/12/2018
+ * 09/01/2019
  *
- * PixiTokenMaker.java - An object that can take a chunk of text and
+ * GoTokenMaker.java - An object that can take a chunk of text and
  * return a linked list of tokens representing it in the C programming
  * language.
  * 
@@ -17,7 +17,7 @@ import org.fife.ui.rsyntaxtextarea.*;
 
 
 /**
- * Scanner for the Pixi programming language.
+ * Scanner for the Go programming language.
  *
  * This implementation was created using
  * <a href="http://www.jflex.de/">JFlex</a> 1.4.1; however, the generated file
@@ -57,8 +57,8 @@ import org.fife.ui.rsyntaxtextarea.*;
 %%
 
 %public
-%class PixiTokenMaker
-%extends AbstractJFlexPixiTokenMaker
+%class GoTokenMaker
+%extends AbstractJFlexGoTokenMaker
 %unicode
 %type org.fife.ui.rsyntaxtextarea.Token
 
@@ -70,7 +70,7 @@ import org.fife.ui.rsyntaxtextarea.*;
 	 * Constructor.  This must be here because JFlex does not generate a
 	 * no-parameter constructor.
 	 */
-	public PixiTokenMaker() {
+	public GoTokenMaker() {
 		super();
 	}
 
@@ -282,7 +282,9 @@ URL						= (((https?|f(tp|ile))"://"|"www.")({URLCharacters}{URLEndCharacter})?)
 <YYINITIAL> {
 
 	/* Keywords */
-	"auto" |
+	"var" |
+	"defer" |
+	"panic" |
 	"break" |
 	"case" |
 	"const" |
@@ -295,154 +297,61 @@ URL						= (((https?|f(tp|ile))"://"|"www.")({URLCharacters}{URLEndCharacter})?)
 	"for" |
 	"goto" |
 	"if" |
-	"halt" |
-	"stop" |
 	"register" |
 	"sizeof" |
 	"static" |
 	"struct" |
 	"switch" |
-	"typedef" |
-	"union" |
-	"volatile" |
+	"type" |
+	"import" |
+	"package" |
+	"func" |
+	"return" |
 	"while"					{ addToken(Token.RESERVED_WORD); }
 
-	"ret" |
-	"fn" |
-	"return"				{ addToken(Token.RESERVED_WORD_2); }
+	"os" |
+	"fmt" |
+	"filepath" |
+	"strings" |
+	"http" |
+	"xml" |
+	"ioutil" |
+	"io" 			{ addToken(Token.RESERVED_WORD_2); }
 
 	/* Data types. */
 	"char" |
+	"bool" |
 	"include" |
 	"double" |
+	"string" |
 	"float" |
 	"int" |
-	"ldiv_t" |
 	"long" |
 	"short" |
 	"signed" |
 	"size_t" |
-	"unsigned" |
 	"void" |
 	"wchar_t"				{ addToken(Token.DATA_TYPE); }
 
 	/* Standard functions */
-	"abort" |
-	"abs" |
-	"box" |
-	"draw_point" |
-	"fbox" |
-	"line" |
-	"new" |
-	"load" |
-	"save" |
-	"print" |
-	"transp" |
-	"set_font" |
-	"set_key_color" |
-	"strstr" |
-	"rand_seed" |
-	"get_event" |
-	"frame" |
-	"num_to_str" |
-	"strcat" |
-	"pixi" |
-	"get_screen" |
-	"get_xsize" |
-	"get_ysize" |
-	"resize" |
-	"set_pixel_size" |
-	"clear" |
-	"clean" |
-	"sprintf" |
-	"wscanf"				{ addToken(Token.FUNCTION); }
+	"Println" |
+	"Printf" |
+	"Create" |
+	"Close" |
+	"Copy" |
+	"Getwd" |
+	"Exit" |
+	"Stat" |
+	"ReadFile" |
+	"Replace" |
+	"Join" |
+	"Get" |
+	"NewReader"				{ addToken(Token.FUNCTION); }
 
 	/* Standard-defined macros. */
-	"RIGHT" |
-	"LEFT" |
-	"TOP" |
-	"BLACK" |
-	"ORANGE" |
-	"YELLOW" |
-	"WHITE" |
-	"GREEN" |
-	"RED" |
-	"BLUE" |
-	"EVT_QUIT" |
-	"EVT_TYPE" |
-	"LANG_NAME" |
-	"FLOAT" |
-	"BOTTOM" |
-	"FORMAT_PIXICONTAINER" |
-	"FORMAT_PNG" |
-	
-    "EVT" |
-	 "EVT_TYPE" |
-    "EVT_FLAGS" |
-    "EVT_TIME" |
-    "EVT_X" |
-    "EVT_Y" |
-    "EVT_KEY" |
-    "EVT_SCANCODE" |
-    "EVT_PRESSURE" |
-    "EVT_UNICODE" |
-    "EVT_MOUSEBUTTONDOWN" |
-    "EVT_MOUSEBUTTONUP" |
-    "EVT_MOUSEMOVE" |
-    "EVT_TOUCHBEGIN" |
-    "EVT_TOUCHEND" |
-    "EVT_TOUCHMOVE" |
-    "EVT_BUTTONDOWN" |
-    "EVT_BUTTONUP" |
-    "EVT_SCREENRESIZE" |
-    "EVT_QUIT" |
-    "EVT_FLAG_SHIFT" |
-    "EVT_FLAG_CTRL" |
-    "EVT_FLAG_ALT" |
-    "EVT_FLAG_MODE" |
-    "EVT_FLAG_MODS" |
-    "EVT_FLAG_DOUBLECLICK" |
-    "KEY_MOUSE_LEFT" |
-    "KEY_MOUSE_MIDDLE" |
-    "KEY_MOUSE_RIGHT" |
-    "KEY_MOUSE_SCROLLUP" |
-    "KEY_MOUSE_SCROLLDOWN" |
-    "KEY_BACKSPACE" |
-    "KEY_TAB" |
-    "KEY_ENTER" |
-    "KEY_ESCAPE" |
-    "KEY_SPACE" |
-    "KEY_F1" |
-    "KEY_F2" |
-    "KEY_F3" |
-    "KEY_F4" |
-    "KEY_F5" |
-    "KEY_F6" |
-    "KEY_F7" |
-    "KEY_F8" |
-    "KEY_F9" |
-    "KEY_F10" |
-    "KEY_F11" |
-    "KEY_F12" |
-    "KEY_UP" |
-    "KEY_DOWN" |
-    "KEY_LEFT" |
-    "KEY_RIGHT" |
-    "KEY_INSERT" |
-    "KEY_DELETE" |
-    "KEY_HOME" |
-    "KEY_END" |
-    "KEY_PAGEUP" |
-    "KEY_PAGEDOWN" |
-    "KEY_CAPS" |
-    "KEY_SHIFT" |
-    "KEY_CTRL" |
-    "KEY_ALT" |
-    "KEY_MENU" |
-    "KEY_UNKNOWN" |
-
-	"WINDOW_XSIZE" |
-	"WINDOW_YSIZE"				{ addToken(Token.PREPROCESSOR); }
+	"nil" |
+	"false" |
+	"true" 		{ addToken(Token.PREPROCESSOR); }
 
 	{LineTerminator}				{ addNullToken(); return firstToken; }
 
@@ -488,6 +397,7 @@ URL						= (((https?|f(tp|ile))"://"|"www.")({URLCharacters}{URLEndCharacter})?)
 	"<<" |
 	">>" |
 	"==" |
+	":=" |
 	"+=" |
 	"-=" |
 	"*=" |

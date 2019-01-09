@@ -58,10 +58,14 @@ public interface SyntaxConstants {
 	String SYNTAX_STYLE_C				= "text/c";
 	
 		/**
-	 * Style for highlighting C.
+	 * Style for highlighting PIXI.
 	 */
 	String SYNTAX_STYLE_PIXI				= "text/pixi";
 
+			/**
+	 * Style for highlighting PIXI.
+	 */
+	String SYNTAX_STYLE_GO				= "text/go";
 
 	/**
 	 * Style for highlighting Clojure.
